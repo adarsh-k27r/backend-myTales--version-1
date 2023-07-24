@@ -1,4 +1,4 @@
-import 'dotenv/config';
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -51,7 +51,7 @@ router.post('/createuser', [
         }
 
 
-        const authtoken = jwt.sign(data, process.env.JWT_TOKEN);
+        const authtoken = jwt.sign(data, `{process.env.JWT_TOKEN}`);
         success=true;
 
         res.json({success, authtoken });
@@ -102,7 +102,7 @@ router.post('/login', [
             id: user.id
         }
 
-        const authtoken = jwt.sign(data, process.env.JWT_TOKEN);
+        const authtoken = jwt.sign(data, `{process.env.JWT_TOKEN}`);
         success=true;
         res.json({success, authtoken });
 
