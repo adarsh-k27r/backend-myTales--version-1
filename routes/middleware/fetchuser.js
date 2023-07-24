@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import 'dotenv/config';
 
-const JWT_token= "adarshis$boy";
+const jwt = require('jsonwebtoken');
 
 const fetchuser = (req,res,next)=>{
 
@@ -11,7 +11,7 @@ const fetchuser = (req,res,next)=>{
     }
 
     try {
-        const data=jwt.verify(token,JWT_token);
+        const data=jwt.verify(token,process.env.JWT_TOKEN);
         req.userid=data.id;  // passing id object in data to the req.user
         next();
     } catch (error) {

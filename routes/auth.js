@@ -1,3 +1,4 @@
+import 'dotenv/config';
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -6,7 +7,6 @@ const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require('./middleware/fetchuser');
 
-const JWT_token = "adarshis$boy";
 
 // ROUTE 1: create a User using: POST "/api/auth/createuser". No login required.
 
@@ -51,7 +51,7 @@ router.post('/createuser', [
         }
 
 
-        const authtoken = jwt.sign(data, JWT_token);
+        const authtoken = jwt.sign(data, process.env.JWT_TOKEN);
         success=true;
 
         res.json({success, authtoken });
@@ -102,7 +102,7 @@ router.post('/login', [
             id: user.id
         }
 
-        const authtoken = jwt.sign(data, JWT_token);
+        const authtoken = jwt.sign(data, process.env.JWT_TOKEN);
         success=true;
         res.json({success, authtoken });
 
