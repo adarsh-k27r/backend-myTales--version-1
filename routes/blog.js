@@ -42,7 +42,7 @@ router.get('/pubstories', async (req, res) => {
 router.get('/masterstories', async (req, res) => {
 
     try {
-        const stories = await Blog.find({ user: '6498d90e7e993fd86c3df11c' }).sort({ createdAt: -1 }).limit(3);
+        const stories = await Blog.find({ user: '650f279069818373a7b141a7' }).sort({ createdAt: -1 }).limit(3);
         res.json(stories);
     } catch (error) {
         console.error(error.message);
