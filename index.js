@@ -9,7 +9,13 @@ const app=express();
 const port=5000;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin:["https://mytales-react.vercel.app"],
+        methods: ["POST","GET"],
+        credentials: true
+    }
+));
 
 app.use("/api/auth",require('./routes/auth'));
 app.use("/api/blog",require('./routes/blog'));
