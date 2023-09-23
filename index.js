@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors(
     {
         origin:["https://mytales-react.vercel.app"],
-        methods: ["POST","GET"],
+        methods: ["POST","GET","DELETE"],
         credentials: true
     }
 ));
